@@ -1,10 +1,8 @@
 class Solution(object):
-    def fairCandySwap(self, aliceSizes, bobSizes):
-      sumA = sum(aliceSizes)
-      sumB = sum(bobSizes)
-      difference = (sumA-sumB)//2
-      bobSet = set(bobSizes)
-      for x in aliceSizes:
-        y = x-difference
-        if y in bobSet:
-            return[x,y]
+    def checkIfExist(self, arr):
+        n = len(arr)
+        for i in range(n):
+            for j in range(n):
+                if i != j and arr[i] == 2*arr[j]:
+                    return True
+        return False
