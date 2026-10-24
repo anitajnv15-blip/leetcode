@@ -1,14 +1,12 @@
 class Solution(object):
-    def arrangeCoins(self, n):
-        left = 1
-        right = n
+    def nextGreatestLetter(self, letters, target):
+        left = 0
+        right = len(letters) - 1
         while left <= right:
             mid = (left+right)//2
-            coins = mid*(mid+1)//2
-            if coins == n:
-                return mid
-            elif coins < n:
-                left = mid+1
+            if letters[mid] <= target:
+                left = mid + 1
             else:
                 right = mid - 1
-        return right
+        return letters[left%len(letters)]
+        
