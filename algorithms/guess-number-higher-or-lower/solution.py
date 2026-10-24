@@ -1,16 +1,21 @@
+# The guess API is already defined for you.
+# @param num, your guess
+# @return -1 if num is higher than the picked number
+#          1 if num is lower than the picked number
+#          otherwise return 0
+# def guess(num):
+
 class Solution(object):
-    def isPerfectSquare(self, num):
-        left = 1
-        right = num 
-        while left <= right:
-            mid = (left+right)//2
-            square = mid*mid
-            if num == square:
-                return True
-            elif num < square:
-                right = mid -1
+    def guessNumber(self, n):
+        pick = random.randint(1,n)
+        low = 1
+        high = n
+        while low <= high:
+            mid = (low+high)//2
+            result = guess(mid)
+            if result == 0:
+                return mid
+            elif result == -1:
+                high = mid-1
             else:
-                left = mid + 1
-        return False
-        
-            
+                low = mid + 1
