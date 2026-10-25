@@ -1,15 +1,27 @@
 class Solution(object):
-    def findKthPositive(self, arr, k):
+    def specialArray(self, nums):
+        nums.sort()
+        n = len(nums)
         left = 0
-        right = len(arr) - 1
+        right = n
         while left <= right:
-            mid = (left + right)//2
-            missing = arr[mid] - (mid+1)
-            if missing < k:
+            x = (left+right)//2
+            count = n - self.lower_bound(nums,x)
+            if count == x:
+                return x
+            elif count > x:
+                left = x+1
+            else:
+                right = x-1
+        return -1
+    def lower_bound(self,nums,target):
+        left = 0
+        right = len(nums)
+        while left < right:
+            mid = (left+right)//2
+            if nums[mid] < target:
                 left = mid + 1
             else:
-                right = mid - 1
-        return left + k
+                right = mid
+        return left
 
-        
-        
