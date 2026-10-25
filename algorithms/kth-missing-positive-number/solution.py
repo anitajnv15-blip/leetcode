@@ -1,14 +1,15 @@
 class Solution(object):
-    def findTheDistanceValue(self, arr1,arr2,d):
-        count = 0
-        for x in arr1:
-            valid = True
-            for y in arr2:
-                if abs(x-y) <= d:
-                    valid = False
-                    break
-            if valid:
-                count += 1
-        return count
+    def findKthPositive(self, arr, k):
+        left = 0
+        right = len(arr) - 1
+        while left <= right:
+            mid = (left + right)//2
+            missing = arr[mid] - (mid+1)
+            if missing < k:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return left + k
 
+        
         
