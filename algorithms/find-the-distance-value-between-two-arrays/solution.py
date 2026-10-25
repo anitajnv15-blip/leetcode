@@ -1,13 +1,14 @@
 class Solution(object):
-    def kWeakestRows(self, mat, k):
-        rows = []
-        for i in range(len(mat)):
-            soldiers = sum(mat[i])
-            rows.append((soldiers,i))
-        rows.sort()
-        answer = []
-        for i in range(k):
-            answer.append(rows[i][1])
-        return answer
+    def findTheDistanceValue(self, arr1,arr2,d):
+        count = 0
+        for x in arr1:
+            valid = True
+            for y in arr2:
+                if abs(x-y) <= d:
+                    valid = False
+                    break
+            if valid:
+                count += 1
+        return count
 
         
